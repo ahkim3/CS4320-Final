@@ -7,7 +7,7 @@ export default function App() {
   const [message, setMessage] = useState('')
 
   async function fetchMessage() {
-    const response = await fetch(`http://${Constants.manifest.debuggerHost.split(':').shift()}:5000/`)
+    const response = await fetch(`http://127.0.0.1:5000/`)
     const message = await response.text()
     setMessage(message)
   }
@@ -17,7 +17,7 @@ export default function App() {
       <Text>Message will appear below:</Text>
       <Text style={styles.text}>{message}</Text>
       <Button title="Fetch Message" onPress={fetchMessage} />
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
     </View>
   );
 }
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontSize: 24,
+    fontSize: 48,
     fontWeight: 'bold',
     marginBottom: 16,
   },
