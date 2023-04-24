@@ -6,7 +6,9 @@ RUN pip install flask
 
 RUN pip install flask-cors
 
-COPY . . 
+RUN pip install pymongo
+
+COPY . .
 
 EXPOSE 5555
 
