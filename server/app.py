@@ -1,13 +1,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
-
+from bson.json_util import dumps
 
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient("mongodb://localhost:27017/")
-db = client["users"]
+uri = "mongodb+srv://root:ZJNWbo0QmvW2XNPC@cs4320-northstars.hutuhng.mongodb.net/?retryWrites=true&w=majority"
+
+client = MongoClient(uri)
+
+db = client["volunteer"]
 
 
 @app.route("/")
@@ -44,7 +47,7 @@ def new_account():
             }
         )
         new_user = db.users.find_one({"email": email}, {"password": 0})
-        return jsonify(new_user)
+        return jsonify(dumps(new_user))
 
 
 if __name__ == "__main__":
