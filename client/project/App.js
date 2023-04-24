@@ -7,9 +7,9 @@ export default function App() {
   const [message, setMessage] = useState('')
 
   async function fetchMessage() {
-    const response = await fetch(`http://127.0.0.1:5000/`)
-    const message = await response.text()
-    setMessage(message)
+    const response = await fetch(`http://localhost:5555/`);
+    const message = await response.text();
+    setMessage(message);
   }
 
   return (
