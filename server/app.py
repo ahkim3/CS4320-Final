@@ -33,6 +33,9 @@ def new_account():
     firstName = request.json.get("firstName")
     lastName = request.json.get("lastName")
     cellPhone = request.json.get("cellPhone")
+    hours = request.json.get("hours")
+    postal = request.json.get("postal")
+
     user = db.users.find_one({"email": email})
     if user:
         return jsonify(None)
@@ -44,6 +47,8 @@ def new_account():
                 "firstName": firstName,
                 "lastName": lastName,
                 "cellPhone": cellPhone,
+                "hours": hours,
+                "postal": postal,
             }
         )
         new_user = db.users.find_one({"email": email}, {"password": 0})
